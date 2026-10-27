@@ -206,9 +206,12 @@
 </head>
 <body>
 
+    <!-- Elemento invisível do player de áudio HTML5 -->
+    <audio id="jukebox-player"></audio>
+
     <header>
         <h1>Jukebox Brasil</h1>
-        <p class="subtitle">Leve música, entertainment e faturamento extra para o seu comércio</p>
+        <p class="subtitle">Leve música, entretenimento e faturamento extra para o seu comércio</p>
     </header>
 
     <div class="container">
@@ -221,10 +224,11 @@
             <div class="screen-interface">
                 <p id="screen-status"><i class="fa-solid fa-compact-disc fa-spin"></i> Toque para Testar o Gênero</p>
                 <div class="genre-grid">
-                    <button class="btn-genre" onclick="simularEscolha('Forró')">🤠 FORRÓ</button>
-                    <button class="btn-genre" onclick="simularEscolha('Sertanejo')">🎸 SERTANEJO</button>
-                    <button class="btn-genre" onclick="simularEscolha('Rock')">⚡ ROCK</button>
-                    <button class="btn-genre" onclick="simularEscolha('Sucessos')">🔥 TOP HITS</button>
+                    <!-- Passamos o nome do gênero e a URL de teste correspondente -->
+                    <button class="btn-genre" onclick="tocarMusica('Forró', 'https://sampleswap.org[120]accordion-loop.mp3')">🤠 FORRÓ</button>
+                    <button class="btn-genre" onclick="tocarMusica('Sertanejo', 'https://sampleswap.org[120]acoustic-strummed.mp3')">🎸 SERTANEJO</button>
+                    <button class="btn-genre" onclick="tocarMusica('Rock', 'https://sampleswap.org[120]crunchy-rock-guitar.mp3')">⚡ ROCK</button>
+                    <button class="btn-genre" onclick="tocarMusica('Sucessos', 'https://sampleswap.org[125]electro-pop-synth.mp3')">🔥 TOP HITS</button>
                 </div>
             </div>
         </div>
@@ -247,7 +251,6 @@
             </div>
         </div>
 
-        <!-- Link 100% formatado para celulares Android/iOS com texto limpo -->
         <a href="https://wa.me." class="btn-cta" target="_blank">
             <i class="fa-brands fa-whatsapp"></i> Quero esta máquina no meu Bar
         </a>
@@ -259,16 +262,29 @@
     </footer>
 
     <script>
-        function simularEscolha(genero) {
+        function tocarMusica(genero, urlAudio) {
             const statusText = document.getElementById('screen-status');
+            const player = document.getElementById('jukebox-player');
+            
+            // Exibe mensagem de carregamento na tela virtual
             statusText.innerHTML = `<i class="fa-solid fa-spinner fa-spin" style="color: var(--neon-red)"></i> Carregando ${genero}...`;
             statusText.style.color = 'var(--neon-red)';
             
-            setTimeout(() => {
-                statusText.innerHTML = `<i class="fa-solid fa-circle-check"></i> Tocando Especial ${genero}!`;
-                statusText.style.color = '#25D366';
-            }, 1200);
+            // Configura a nova fonte e inicia a reprodução de áudio real
+            player.src = urlAudio;
+            
+            player.play()
+                .then(() => {
+                    // Atualiza a tela indicando que o som está tocando
+                    statusText.innerHTML = `<i class="fa-solid fa-volume-high fa-beat"></i> Tocando Demonstrativo ${genero}!`;
+                    statusText.style.color = '#25D366';
+                })
+                .catch(error => {
+                    // Trata navegadores que bloqueiam reprodução automática sem clique prévio
+                    statusText.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> Clique novamente para tocar`;
+                    statusText.style.color = 'var(--neon-blue)';
+                    console.log("Erro ao tocar áudio:", error);
+                });
         }
     </script>
 </body>
-</html>
