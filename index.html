@@ -14,9 +14,19 @@
             margin: 0 auto;
             padding: 20px;
         }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .logo-container img {
+            max-width: 180px;
+            border-radius: 10px;
+        }
         h1 {
             text-align: center;
             color: #00f0ff;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
         }
         .jukebox {
             background: #12121a;
@@ -70,7 +80,11 @@
 </head>
 <body>
 
-    <h1>🎵 Jukebox Brasil</h1>
+    <div class="logo-container">
+        <img src="logo.png" alt="Jukebox Brasil">
+    </div>
+
+    <h1>Jukebox Brasil</h1>
 
     <div class="jukebox">
         <div class="status" id="status">
