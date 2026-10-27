@@ -74,7 +74,7 @@
 
     <div class="jukebox">
         <div class="status" id="status">
-            <i class="fa-solid fa-compact-disc"></i> Escolha um gênero
+            <i class="fa-solid fa-compact-disc"></i> Clique 2x para tocar
         </div>
         <div class="botoes">
             <button onclick="tocar('Forró', 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c7c084b6.mp3')">🤠 FORRÓ</button>
@@ -108,18 +108,27 @@
     <audio id="player">
 
     <script>
+        const player = document.getElementById('player');
+        let primeiroClique = true;
+
         function tocar(nome, url) {
             const status = document.getElementById('status');
-            const player = document.getElementById('player');
+            
+            if (primeiroClique) {
+                primeiroClique = false;
+                status.innerHTML = '✅ Pronto! Agora clique NOVAMENTE para tocar ' + nome + '!';
+                return;
+            }
+            
             status.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Carregando ' + nome + '...';
             player.pause();
             player.src = url;
             player.play()
                 .then(() => {
-                    status.innerHTML = '<i class="fa-solid fa-volume-high"></i> Tocando ' + nome + '!';
+                    status.innerHTML = '🎵 Tocando ' + nome + '! Aproveite!';
                 })
                 .catch(() => {
-                    status.innerHTML = 'Clique novamente';
+                    status.innerHTML = '❌ Clique novamente no botão';
                 });
         }
     </script>
