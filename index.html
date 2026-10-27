@@ -26,7 +26,6 @@
             overflow-x: hidden;
         }
 
-        /* Header */
         header {
             text-align: center;
             padding: 40px 20px;
@@ -46,7 +45,6 @@
             font-size: 1.1rem;
         }
 
-        /* Container Principal */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -56,7 +54,6 @@
             align-items: center;
         }
 
-        /* Simulador Jukebox Virtual */
         .jukebox-virtual {
             background-color: var(--card-bg);
             border: 2px solid #333;
@@ -91,7 +88,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            border: 1px solid #22px;
+            border: 1px solid #222;
         }
 
         .render-container img {
@@ -100,7 +97,6 @@
             object-fit: contain;
         }
 
-        /* Tela de Interação Interativa */
         .screen-interface {
             background: #050508;
             border: 1px solid var(--neon-blue);
@@ -140,7 +136,6 @@
             background: #201018;
         }
 
-        /* Seção de Benefícios */
         .benefits {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -178,7 +173,6 @@
             line-height: 1.5;
         }
 
-        /* Botão de Ação WhatsApp */
         .btn-cta {
             background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
             color: white;
@@ -219,11 +213,10 @@
 
     <div class="container">
         
-        <!-- Simulador Visual da Máquina -->
         <div class="jukebox-virtual">
             <div class="render-container">
-                <!-- Substitua o link abaixo pelo caminho do seu Render oficial (.png ou .jpg) -->
-                <img src="seu-render-da-maquina.png" alt="Máquina Jukebox Virtual" id="jukebox-img">
+                <!-- Puxa a sua logo automaticamente se estiver como logo.png -->
+                <img src="logo.png" alt="Máquina Jukebox Virtual" id="jukebox-img">
             </div>
             
             <div class="screen-interface">
@@ -237,7 +230,6 @@
             </div>
         </div>
 
-        <!-- Seção de Benefícios para o Dono do Bar -->
         <div class="benefits">
             <div class="benefit-card">
                 <i class="fa-solid fa-dollar-sign"></i>
@@ -256,8 +248,6 @@
             </div>
         </div>
 
-        <!-- Botão de Ação Direta -->
-        <!-- Substitua o número abaixo pelo seu número de WhatsApp correto -->
         <a href="https://wa.me." class="btn-cta" target="_blank">
             <i class="fa-brands fa-whatsapp"></i> Quero esta máquina no meu Bar
         </a>
@@ -269,7 +259,6 @@
     </footer>
 
     <script>
-        // Pequena interação para simular o funcionamento no clique
         function simularEscolha(genero) {
             const statusText = document.getElementById('screen-status');
             statusText.innerHTML = `<i class="fa-solid fa-spinner fa-spin" style="color: var(--neon-red)"></i> Carregando ${genero}...`;
