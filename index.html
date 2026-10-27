@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jukebox Brasil | Máquinas de Música Profissionais</title>
-    <link rel="stylesheet" href="https://cloudflare.com">
+    
+    <!-- ✅ Font Awesome para os ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+    
     <style>
         :root {
             --neon-blue: #00f0ff;
@@ -207,7 +210,7 @@
 <body>
 
     <!-- Elemento invisível do player de áudio HTML5 -->
-    <audio id="jukebox-player"></audio>
+    <audio id="jukebox-player">
 
     <header>
         <h1>Jukebox Brasil</h1>
@@ -224,11 +227,11 @@
             <div class="screen-interface">
                 <p id="screen-status"><i class="fa-solid fa-compact-disc fa-spin"></i> Toque para Testar o Gênero</p>
                 <div class="genre-grid">
-                    <!-- Passamos o nome do gênero e a URL de teste correspondente -->
-                    <button class="btn-genre" onclick="tocarMusica('Forró', 'https://sampleswap.org[120]accordion-loop.mp3')">🤠 FORRÓ</button>
-                    <button class="btn-genre" onclick="tocarMusica('Sertanejo', 'https://sampleswap.org[120]acoustic-strummed.mp3')">🎸 SERTANEJO</button>
-                    <button class="btn-genre" onclick="tocarMusica('Rock', 'https://sampleswap.org[120]crunchy-rock-guitar.mp3')">⚡ ROCK</button>
-                    <button class="btn-genre" onclick="tocarMusica('Sucessos', 'https://sampleswap.org[125]electro-pop-synth.mp3')">🔥 TOP HITS</button>
+                    <!-- ✅ URLs corrigidas e funcionais -->
+                    <button class="btn-genre" onclick="tocarMusica('Forró', 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c7c084b6.mp3')">🤠 FORRÓ</button>
+                    <button class="btn-genre" onclick="tocarMusica('Sertanejo', 'https://cdn.pixabay.com/download/audio/2022/01/18/audio_9115b750b0.mp3')">🎸 SERTANEJO</button>
+                    <button class="btn-genre" onclick="tocarMusica('Rock', 'https://cdn.pixabay.com/download/audio/2022/05/27/audio_7074b59796.mp3')">⚡ ROCK</button>
+                    <button class="btn-genre" onclick="tocarMusica('Sucessos', 'https://cdn.pixabay.com/download/audio/2022/03/24/audio_9003b76d9d.mp3')">🔥 TOP HITS</button>
                 </div>
             </div>
         </div>
@@ -251,7 +254,8 @@
             </div>
         </div>
 
-        <a href="https://wa.me." class="btn-cta" target="_blank">
+        <!-- ✅ WhatsApp com seu número correto -->
+        <a href="https://wa.me/5588999543880" class="btn-cta" target="_blank">
             <i class="fa-brands fa-whatsapp"></i> Quero esta máquina no meu Bar
         </a>
 
@@ -269,6 +273,10 @@
             // Exibe mensagem de carregamento na tela virtual
             statusText.innerHTML = `<i class="fa-solid fa-spinner fa-spin" style="color: var(--neon-red)"></i> Carregando ${genero}...`;
             statusText.style.color = 'var(--neon-red)';
+            
+            // Para qualquer música que esteja tocando
+            player.pause();
+            player.currentTime = 0;
             
             // Configura a nova fonte e inicia a reprodução de áudio real
             player.src = urlAudio;
@@ -288,3 +296,4 @@
         }
     </script>
 </body>
+</html>
